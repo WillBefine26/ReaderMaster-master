@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ReaderMaster</string>
+
+    <string name="progressdiaog">数据加载中，请稍后...</string>
+</resources>
