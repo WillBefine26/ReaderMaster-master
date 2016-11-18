@@ -1,5 +1,80 @@
 <resources>
-    <string name="app_name">ReaderMaster</string>
-
+    <string name="app_name">悦读</string>
+    <string name="versionname_unknown">版本名称错误</string>
     <string name="progressdiaog">数据加载中，请稍后...</string>
+    <string name="reload">重新加载</string>
+
+
+    <!-- 共享过度动画 -->
+    <string name="transition_photos">transition_animation_news_photos</string>
+    <string name="network_unable">网络不可用</string>
+    <string name="sd_unable">SD卡不可用</string>
+
+    <string name="set">设置</string>
+    <string name="hint_search_default">搜索</string>
+    <string name="action_search">搜索</string>
+
+    <string name="permission_title">权限申请说明</string>
+    <string name="permission_refuse">请点击"设置"-"权限"-打开所需权限.\n开启后点击2次后退按钮,即可返回应用.</string>
+
+    <string name="app_update_progress">正在下载&#8230;</string>
+    <string name="app_update_complete">下载成功，点击安装。</string>
+    <string name="app_update_error">下载失败，建议在wifi下更新！</string>
+    <string name="app_update_retry">点击重试</string>
+
+    <string name="image_download_success">图片已下载到本地相册</string>
+    <string name="image_download_failed">图片下载失败</string>
+
+    <string name="swipe_loading_more">加载更多&#8230;</string>
+    <string name="swipe_loading_error">网络不给力,点击重试</string>
+    <string name="swipe_def_error">网络神游了\n点击页面重新刷新</string>
+    <string name="swipe_def_sale">暂无数据\n换个搜索条件试试</string>
+    <string name="swipe_not_lodemore">已加载到最后一页</string>
+
+    <string name="load_error_retry">加载失败，点击重试</string>
+
+    <string name="back_app">再按一次退出悦读</string>
+
+    <string name="select_city">选择城市</string>
+    <string name="hot_city">热门城市</string>
+    <string name="located_city">定位城市</string>
+    <string name="hint_search_box">请输入城市名或拼音</string>
+    <string name="nothing_found">没有搜索结果~</string>
+    <string name="locating">正在定位…</string>
+    <string name="located_failed">定位失败</string>
+    <string name="located_again">重新定位</string>
+
+    <string name="open">打开</string>
+    <string name="close">关闭</string>
+    <string name="action_ok">确定</string>
+    <string name="activity_home_class_title_air_quality_index">空气质量指数</string>
+    <string name="activity_home_class_title_data_source">数据来源 中国天气网</string>
+    <string name="activity_home_class_title_hour_forecast">逐时预报</string>
+    <string name="activity_home_class_title_living_index">生活指数</string>
+    <string name="activity_home_class_title_precipitation_probability">降水概率</string>
+    <string name="activity_home_class_title_sun">日出和日落</string>
+    <string name="activity_home_class_title_wind_and_humidity">风和湿度</string>
+    <string name="activity_home_class_title_wind_speed_forecast">风向预报</string>
+    <string name="activity_home_drawer_list_item_add_city">添加城市</string>
+    <string name="activity_home_menu_action_weather_preview">动态背景预览</string>
+    <string name="activity_home_refresh_time">%1$s 更新</string>
+    <string name="activity_home_str_humidity">湿度</string>
+    <string name="activity_home_str_no2">NO2[二氧化氮]</string>
+    <string name="activity_home_str_pm10">PM10[可吸入颗粒物]</string>
+    <string name="activity_home_str_pm25">PM2.5[细颗粒物]</string>
+    <string name="activity_home_str_so2">SO2[二氧化硫]</string>
+    <string name="activity_home_str_wind_direction">风向</string>
+    <string name="activity_home_str_wind_speed">风力</string>
+    <string name="activity_home_tip_bad_network">请检查网络设置</string>
+    <string name="activity_home_tip_locate_success">定位成功：%1$s</string>
+    <string name="activity_home_tip_locating">正在定位...</string>
+    <string name="activity_home_type_and_real_feel_temp">%1$s | 风速 %2$s°</string>
+    <string name="activity_home_yesterday_weather">昨日天气 %1$s %2$s° ~ %3$s°</string>
+    <string name="custom_sun_view_str_sunrise">日出 %1$s</string>
+    <string name="custom_sun_view_str_sunset">日落 %1$s</string>
+    <string name="share_contents">来自「悦读」的分享：%1$s %2$s</string>
+    <string name="share">分享</string>
+    <string name="news_from">%1$s %2$s</string>
+
+
 </resources>

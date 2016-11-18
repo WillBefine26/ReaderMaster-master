@@ -2,6 +2,7 @@ package com.yp.readermaster.fragment;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.yp.readermaster.R;
@@ -60,7 +61,7 @@ public class NewsFragment extends RxLazyBaseFragment{
         mViewPager.setOffscreenPageLimit(8);
         mViewPager.setAdapter(mNewsPagerAdapter);
         mSlidingTabs.setViewPager(mViewPager);
-
+        Log.d("168", "FragmentfinishCreate: 666666666666");
     }
 
     @Override
