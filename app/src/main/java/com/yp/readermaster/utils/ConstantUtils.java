@@ -1,5 +1,7 @@
 package com.yp.readermaster.utils;
 
+import com.yp.readermaster.R;
+
 /**
  * Created by
  * Administrator WangDongxu
@@ -11,9 +13,18 @@ public class ConstantUtils {
     /**
      * 加载失败显示的图片
      */
-    //public static final int ERROR_IMAGE_ID = R.drawable.loading_image;
+    public static final int ERROR_IMAGE_ID = R.drawable.loading_image;
+    /**
+     * 加载过程中显示的图片
+     */
+    public static final int LOADING_IMAGE_ID = R.drawable.loading_image;
+    //聚合数据--新闻头条apikey
+    public static final String NEWS_APIKEY = "5b379bc0fafcc419de5bcc0e8e8aeb13";
 
     public enum ENewsType {
+        //接口
+        //http://v.juhe.cn/toutiao/index?type=top&key=5b379bc0fafcc419de5bcc0e8e8aeb13
+
 //        头条，科技，娱乐，社会，国内，国际，体育，军事，财经，时尚
         TOP_NEWS(0, "top", "头条"),
         KEJI_NEWS(1, "keji", "科技"),

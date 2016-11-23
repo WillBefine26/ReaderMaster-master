@@ -5,14 +5,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.yp.readermaster.R;
 import com.yp.readermaster.adapter.RefreshCallback;
 import com.yp.readermaster.adapter.SwipeAdapter;
 import com.yp.readermaster.iml.SwipeRefreshCallback;
-
 /**
  * Created by
  * Administrator WangDongxu
@@ -35,19 +33,17 @@ public class SwipeRecyclerView extends FrameLayout implements SwipeRefreshLayout
         mContext = context;
     }
     public SwipeRecyclerView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
         mContext = context;
     }
     public SwipeRecyclerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        Log.d("168", "SwipeRecyclerView: one");
         mContext = context;
         inflate(context, R.layout.swiperecyclerview, this);
         //
         mSwipeRefreshLayout = (MSwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         //
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        Log.d("168", "SwipeRecyclerView: two");
         init();
     }
 
@@ -106,6 +102,7 @@ public class SwipeRecyclerView extends FrameLayout implements SwipeRefreshLayout
     public void onRefresh() {
         mSwipeAdapter.setLoadStatus(1);
         mRefreshCallback.downRefresh();
+
     }
 
     /**

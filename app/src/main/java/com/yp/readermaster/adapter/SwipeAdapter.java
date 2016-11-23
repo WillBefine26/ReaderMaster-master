@@ -3,6 +3,7 @@ package com.yp.readermaster.adapter;
 import android.content.Context;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,7 @@ public abstract class SwipeAdapter<E, UVH extends RecyclerView.ViewHolder>
      * 设置刷新回调
      */
     public void setSwipeRefreshCallback(SwipeRefreshCallback swipeRefreshCallback) {
+        Log.d("168", "SwipeAdapter: 11111111111");
         mSwipeRefreshCallback = swipeRefreshCallback;
     }
 

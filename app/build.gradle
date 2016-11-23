@@ -57,4 +57,20 @@ dependencies {
     //swiperefreshalayout
     compile 'com.demievil.library:refreshlayout:1.0.0@aar'
     compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+    // retrofit -- 网络下载工具
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.google.code.gson:gson:2.6.2'
+    //Stetho调试工具
+    compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'com.facebook.stetho:stetho-okhttp3:1.4.1'
+    //Okhttp3
+    compile 'com.squareup.okhttp3:okhttp:3.4.2'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
+    //Glide 图片加载库
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    //compile 'com.jayfeng.lesscode:lesscode-core:0.1.3'
+
 }
