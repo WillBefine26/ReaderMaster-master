@@ -3,7 +3,6 @@ package com.yp.readermaster.adapter;
 import android.content.Context;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +50,6 @@ public abstract class SwipeAdapter<E, UVH extends RecyclerView.ViewHolder>
      * 设置刷新回调
      */
     public void setSwipeRefreshCallback(SwipeRefreshCallback swipeRefreshCallback) {
-        Log.d("168", "SwipeAdapter: 11111111111");
         mSwipeRefreshCallback = swipeRefreshCallback;
     }
 
@@ -100,7 +98,7 @@ public abstract class SwipeAdapter<E, UVH extends RecyclerView.ViewHolder>
      * @param hasMore 是否有更多
      */
 
-    public void load(ArrayList<E> temp, boolean hasMore) {
+    public void load1(ArrayList<E> temp, boolean hasMore) {
         mSwipeRefreshCallback.refreshComplete();
         switch (mLoadStatus) {
             case 1:

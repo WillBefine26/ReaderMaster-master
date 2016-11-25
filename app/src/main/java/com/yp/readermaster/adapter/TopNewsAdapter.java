@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.yp.readermaster.R;
 import com.yp.readermaster.adapter.vhs.TopNewsViewHolder;
+import com.yp.readermaster.config.App;
 import com.yp.readermaster.entity.TopNewsEntity;
 import com.yp.readermaster.iml.SwipeItemCallback;
 
@@ -52,14 +54,14 @@ public class TopNewsAdapter extends SwipeAdapter1<TopNewsEntity.ResultBean.DataB
         try {
             changeColor(holder.mTvtab);
         } catch (Exception e) {
-            e.printStackTrace();
+        e.printStackTrace();
         }
 
         holder.mTvTitle.setText(dataBean.getTitle());
         holder.mTvDesc.setText(dataBean.getTitle()+dataBean.getUrl()+dataBean.getThumbnail_pic_s()+dataBean.getThumbnail_pic_s02());
         holder.mTvTime.setText("时间轴："+dataBean.getDate());
         holder.mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-//        App.getInstance().displayImage(dataBean.getThumbnail_pic_s(),holder.mImageView,0,true, DiskCacheStrategy.ALL);
+        App.getInstance().displayImage(dataBean.getThumbnail_pic_s(),holder.mImageView,0,true, DiskCacheStrategy.ALL);
         holder.mTvTab2.setText("『"+dataBean.getType()+"』");
 
     }

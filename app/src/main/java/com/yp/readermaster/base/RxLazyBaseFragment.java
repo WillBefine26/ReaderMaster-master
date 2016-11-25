@@ -3,12 +3,11 @@ package com.yp.readermaster.base;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.support.annotation.LayoutRes;
 import android.view.ViewGroup;
 
 import com.trello.rxlifecycle.components.support.RxFragment;
@@ -57,7 +56,7 @@ public abstract class RxLazyBaseFragment extends RxFragment{
     protected abstract void finishCreateView(Bundle savedInstanceState);
 
     public FragmentActivity getSupportActivity() {
-        return (FragmentActivity) super.getActivity();
+        return  super.getActivity();
     }
     public android.app.ActionBar getSupportActionBar() {
         return getSupportActivity().getActionBar();

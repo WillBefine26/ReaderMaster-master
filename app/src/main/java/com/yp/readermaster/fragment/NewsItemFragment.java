@@ -15,6 +15,7 @@ import com.yp.readermaster.iml.SwipeItemCallback;
 import com.yp.readermaster.net.RetrofitHelper;
 import com.yp.readermaster.utils.ConstantUtils;
 import com.yp.readermaster.utils.LayoutHelper;
+import com.yp.readermaster.utils.LogUtils;
 import com.yp.readermaster.widget.SwipeRecyclerView;
 
 import java.util.ArrayList;
@@ -69,20 +70,20 @@ public class NewsItemFragment extends RxLazyBaseFragment {
 
     private void initData() {
         RecyclerView mRecyclerView = mSwipeRecyclerView.getRecyclerView();
-        Log.d("168", "NewsItemFragment: 111111");
         mRecyclerView.addItemDecoration(LayoutHelper.getHorizontalDivider_6(getApplicationContext()));
         mSwipeRecyclerView.setRefreshCallback(new RefreshCallback() {
             @Override
             public void downRefresh() {
-                Toast.makeText(getApplicationContext(),"下拉刷新",Toast.LENGTH_SHORT).show();
                 if (mArrayList != null) mArrayList.clear();
                 curpageInt = 1;
                 getNetData();
+              Toast.makeText(getApplicationContext(),"下拉刷新完成",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void upRefresh(int count) {
-                getNetData();
+                getNetData1();
+                LogUtils.d("--------------count-----------------"+count);
             }
         });
 
@@ -90,15 +91,14 @@ public class NewsItemFragment extends RxLazyBaseFragment {
                     @Override
                     public void callback(View view, int position, TopNewsEntity.ResultBean.DataBean dataBean) {
                         //跳转详情页面
-                        Log.d("168", "NewsItemFragment: 555555555555555");
+                        Log.d("168", "NewsItemFragment--intent: 555555555555555");
                     }
                 });
 
-        Log.d("168", "NewsItemFragment: 222222");
+
         mSwipeRecyclerView.setAdapter(mTopNewsAdapter);
-        Log.d("168", "NewsItemFragment: 3333333");
         mSwipeRecyclerView.startDownRefresh();
-        Log.d("168", "NewsItemFragment: 44444444");
+        Log.d("168", "NewsItemFragment: 111111");
     }
     // 设置新闻类型，和页面有关系
     public void setNewsType(ConstantUtils.ENewsType type) {
@@ -112,7 +112,7 @@ public class NewsItemFragment extends RxLazyBaseFragment {
                 .flatMap(new Func1<TopNewsEntity, Observable<?>>() {
                     @Override
                     public Observable<?> call(TopNewsEntity topNewsEntity) {
-                        mArrayList = (ArrayList<TopNewsEntity.ResultBean.DataBean>) topNewsEntity.getResult().getData();
+                        mArrayList =  topNewsEntity.getResult().getData();
                         if (isListSize) {
                             totalPagerInt = mArrayList.size() * 3; //模拟加载三页
                             isListSize = false;
@@ -135,5 +135,43 @@ public class NewsItemFragment extends RxLazyBaseFragment {
                 });
 
     }
+
+    /***
+     *  分页加载数据
+     */
+    boolean isListSize1 = true;
+    private ArrayList<TopNewsEntity.ResultBean.DataBean> alist = new ArrayList<>() ;
+    int list ;
+    private void getNetData1(){
+        RetrofitHelper.getTopNewsApi()
+                .getNews(mENewsType.getType(), ConstantUtils.NEWS_APIKEY)
+                .compose(this.<TopNewsEntity>bindToLifecycle())
+                .flatMap(new Func1<TopNewsEntity, Observable<?>>() {
+                    @Override
+                    public Observable<?> call(TopNewsEntity topNewsEntity) {
+                        mArrayList =  topNewsEntity.getResult().getData();
+                        if (isListSize1) {
+                            list = alist.size() * 3; //模拟加载三页
+                            isListSize1 = false;
+                        }
+                        return Observable.just("onNext");
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<Object>() {
+                    @Override
+                    public void call(Object o) {
+                        mTopNewsAdapter.load1(alist, isListSize1);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        mSwipeRecyclerView.downRefreshComplete(3);
+                    }
+                });
+
+    }
+
 
 }

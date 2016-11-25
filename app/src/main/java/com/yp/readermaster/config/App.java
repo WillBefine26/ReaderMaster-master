@@ -4,6 +4,7 @@ import android.app.Application;
 import android.app.Service;
 import android.content.Context;
 import android.os.Vibrator;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -47,6 +48,7 @@ public class App extends Application{
     }
 
     public static App getInstance(){
+        Log.d("168", "getInstance: 666");
         return instance ;
     }
 
@@ -82,6 +84,7 @@ public class App extends Application{
 
     public void displayImage(String uri, ImageView iv, int resId,
                              boolean isSkipMemoryCache, DiskCacheStrategy diskCacheType) {
+        Log.d("168", "displayImage: 00000000000");
         Glide.with(appContext)
                 .load(uri)
                 .placeholder(ConstantUtils.LOADING_IMAGE_ID)
@@ -90,7 +93,7 @@ public class App extends Application{
                 .skipMemoryCache(isSkipMemoryCache)
                 .diskCacheStrategy(diskCacheType)
                 .into(iv);
-
+        Log.d("168", "displayImage: 8888888888");
     }
 
     public void displayImage(String uri, ImageView iv) {

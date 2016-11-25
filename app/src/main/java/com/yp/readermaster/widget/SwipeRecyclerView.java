@@ -5,6 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.yp.readermaster.R;
@@ -94,7 +95,7 @@ public class SwipeRecyclerView extends FrameLayout implements SwipeRefreshLayout
     }
 
     private int colorSchemeResources() {
-        return R.color.colorPrimary;
+        return R.color.pink;
     }
 
 
@@ -116,10 +117,12 @@ public class SwipeRecyclerView extends FrameLayout implements SwipeRefreshLayout
      * 开启下拉刷新
      */
     public void startDownRefresh() {
+        Log.d("168", "sAdapter: 111111");
         mSwipeAdapter.setLoadStatus(1);
         mSwipeRefreshLayout.setRefreshing(true);
         mRecyclerView.smoothScrollToPosition(0);
         mRefreshCallback.downRefresh();
+        Log.d("168", "sAdapter: 2222222");
     }
 
     /**

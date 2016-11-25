@@ -21,6 +21,7 @@
         android:id="@+id/tv_tab2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="『生活家』"
         android:textColor="@color/darkgray"
         android:textSize="11sp"/>

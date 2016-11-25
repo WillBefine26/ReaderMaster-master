@@ -1,7 +1,7 @@
 package com.yp.readermaster.entity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by
@@ -52,22 +52,22 @@ public class TopNewsEntity implements Serializable {
          */
 
         private String stat;
-        private List<DataBean> data;
-
-        public String getStat() {
-            return stat;
-        }
+        private ArrayList<DataBean> data;
 
         public void setStat(String stat) {
             this.stat = stat;
         }
 
-        public List<DataBean> getData() {
-            return data;
+        public void setData(ArrayList<DataBean> data) {
+            this.data = data;
         }
 
-        public void setData(List<DataBean> data) {
-            this.data = data;
+        public String getStat() {
+            return stat;
+        }
+
+        public ArrayList<DataBean> getData() {
+            return data;
         }
 
         public static class DataBean {

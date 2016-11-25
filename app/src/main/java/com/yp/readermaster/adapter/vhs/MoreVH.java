@@ -21,5 +21,6 @@ public class MoreVH extends RecyclerView.ViewHolder{
     public MoreVH(View itemView) {
         super(itemView);
         mPbSwipeMore = (ProgressBar) itemView.findViewById(R.id.pb_swipe_more);
+        mAtvSwipeMore = (AppCompatTextView) itemView.findViewById(R.id.atv_swipe_more);
     }
 }
