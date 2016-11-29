@@ -23,7 +23,7 @@ import java.util.Random;
  */
 
 public class TopNewsAdapter extends SwipeAdapter1<TopNewsEntity.ResultBean.DataBean,TopNewsViewHolder>{
-    private Context context;
+    private Context mContext;
 
     public TopNewsAdapter(Context context, SwipeItemCallback<TopNewsEntity.ResultBean.DataBean> swipeItemCallback) {
         super(context, swipeItemCallback);
@@ -49,21 +49,19 @@ public class TopNewsAdapter extends SwipeAdapter1<TopNewsEntity.ResultBean.DataB
         mList.size();
         TopNewsEntity.ResultBean.DataBean dataBean = mList.get(position);
         holder.mTvtab.setText(dataBean.getAuthor_name());
-
         // try
         try {
             changeColor(holder.mTvtab);
         } catch (Exception e) {
-        e.printStackTrace();
+            e.printStackTrace();
         }
 
         holder.mTvTitle.setText(dataBean.getTitle());
         holder.mTvDesc.setText(dataBean.getTitle()+dataBean.getUrl()+dataBean.getThumbnail_pic_s()+dataBean.getThumbnail_pic_s02());
         holder.mTvTime.setText("时间轴："+dataBean.getDate());
         holder.mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        App.getInstance().displayImage(dataBean.getThumbnail_pic_s(),holder.mImageView,0,true, DiskCacheStrategy.ALL);
         holder.mTvTab2.setText("『"+dataBean.getType()+"』");
-
+        App.getInstance().displayImage(dataBean.getThumbnail_pic_s(),holder.mImageView,0,true, DiskCacheStrategy.ALL);
     }
 
     public void changeColor(TextView view){

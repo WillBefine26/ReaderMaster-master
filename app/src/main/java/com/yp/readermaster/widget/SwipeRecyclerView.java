@@ -117,12 +117,10 @@ public class SwipeRecyclerView extends FrameLayout implements SwipeRefreshLayout
      * 开启下拉刷新
      */
     public void startDownRefresh() {
-        Log.d("168", "sAdapter: 111111");
         mSwipeAdapter.setLoadStatus(1);
         mSwipeRefreshLayout.setRefreshing(true);
         mRecyclerView.smoothScrollToPosition(0);
         mRefreshCallback.downRefresh();
-        Log.d("168", "sAdapter: 2222222");
     }
 
     /**

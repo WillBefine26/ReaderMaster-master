@@ -82,7 +82,7 @@ public class NewsItemFragment extends RxLazyBaseFragment {
 
             @Override
             public void upRefresh(int count) {
-                getNetData1();
+                getNetData();
                 LogUtils.d("--------------count-----------------"+count);
             }
         });
@@ -98,7 +98,6 @@ public class NewsItemFragment extends RxLazyBaseFragment {
 
         mSwipeRecyclerView.setAdapter(mTopNewsAdapter);
         mSwipeRecyclerView.startDownRefresh();
-        Log.d("168", "NewsItemFragment: 111111");
     }
     // 设置新闻类型，和页面有关系
     public void setNewsType(ConstantUtils.ENewsType type) {
@@ -112,7 +111,7 @@ public class NewsItemFragment extends RxLazyBaseFragment {
                 .flatMap(new Func1<TopNewsEntity, Observable<?>>() {
                     @Override
                     public Observable<?> call(TopNewsEntity topNewsEntity) {
-                        mArrayList =  topNewsEntity.getResult().getData();
+                        mArrayList = topNewsEntity.getResult().getData();
                         if (isListSize) {
                             totalPagerInt = mArrayList.size() * 3; //模拟加载三页
                             isListSize = false;
@@ -135,43 +134,5 @@ public class NewsItemFragment extends RxLazyBaseFragment {
                 });
 
     }
-
-    /***
-     *  分页加载数据
-     */
-    boolean isListSize1 = true;
-    private ArrayList<TopNewsEntity.ResultBean.DataBean> alist = new ArrayList<>() ;
-    int list ;
-    private void getNetData1(){
-        RetrofitHelper.getTopNewsApi()
-                .getNews(mENewsType.getType(), ConstantUtils.NEWS_APIKEY)
-                .compose(this.<TopNewsEntity>bindToLifecycle())
-                .flatMap(new Func1<TopNewsEntity, Observable<?>>() {
-                    @Override
-                    public Observable<?> call(TopNewsEntity topNewsEntity) {
-                        mArrayList =  topNewsEntity.getResult().getData();
-                        if (isListSize1) {
-                            list = alist.size() * 3; //模拟加载三页
-                            isListSize1 = false;
-                        }
-                        return Observable.just("onNext");
-                    }
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Object>() {
-                    @Override
-                    public void call(Object o) {
-                        mTopNewsAdapter.load1(alist, isListSize1);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        mSwipeRecyclerView.downRefreshComplete(3);
-                    }
-                });
-
-    }
-
 
 }

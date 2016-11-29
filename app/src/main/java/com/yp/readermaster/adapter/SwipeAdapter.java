@@ -21,7 +21,10 @@ import java.util.ArrayList;
  * Created by
  * Administrator WangDongxu
  * on 2016/11/18 0018 10:08
- * 加载状态-1:初始化;0:普通状态;1:下拉刷新;2:加载更多;3:加载出错
+ * <p>
+ *     {@link #getLoadStatus()} 加载状态-1:初始化;0:普通状态;1:下拉刷新;2:加载更多;3:加载出错
+ * </p>
+ * 描述:列表adapter基类
  */
 
 public abstract class SwipeAdapter<E, UVH extends RecyclerView.ViewHolder>
@@ -59,6 +62,13 @@ public abstract class SwipeAdapter<E, UVH extends RecyclerView.ViewHolder>
      * @param temp  每次请求到的数据
      * @param total 列表数据的总数
      */
+
+    /***
+     *
+         mHasMore = mList.size() <= total;
+         mHasMore = mList.size() < total;
+        c出现了 数组 越界异常
+     */
     public void load(ArrayList<E> temp, int total) {
         mSwipeRefreshCallback.refreshComplete();
         switch (mLoadStatus) {
@@ -68,22 +78,22 @@ public abstract class SwipeAdapter<E, UVH extends RecyclerView.ViewHolder>
                 if (temp != null) {
                     mList.addAll(temp);
                 }
-                mHasMore = mList.size() < total;
+                mHasMore = mList.size() <= total;
                 notifyDataSetChanged();
                 break;
             case 2:
                 mLoadStatus = 0;
                 if (temp == null) {
-                    mHasMore = mList.size() < total;
+                    mHasMore = mList.size() <= total;
                     notifyDataSetChanged();
-                }else{
+                } else {
                     mList.addAll(temp);
-                    mHasMore = mList.size() < total;
+                    mHasMore = mList.size() <= total;
                     if (mHasMore) {
                         notifyItemRangeInserted(getItemCount() - temp.size(), mList.size());
-                    }else {
-                        notifyItemRangeInserted(mList.size() - temp.size(), mList.size());
-                        ToastUtils.showToast(mContext, R.string.swipe_not_lodemore);
+                    } else {
+                        notifyItemRangeChanged(mList.size() - temp.size(), mList.size());
+                        ToastUtils.showToast(mContext,R.string.swipe_not_lodemore);
                     }
                 }
                 break;
@@ -91,14 +101,17 @@ public abstract class SwipeAdapter<E, UVH extends RecyclerView.ViewHolder>
                 break;
         }
     }
+
+
+
     /**
      * 加载数据[需判断是够有更多数据]
      *
      * @param temp    每次请求到的数据
-     * @param hasMore 是否有更多
+     *  @param hasMore 是否有更多
      */
 
-    public void load1(ArrayList<E> temp, boolean hasMore) {
+    public void load(ArrayList<E> temp, boolean hasMore) {
         mSwipeRefreshCallback.refreshComplete();
         switch (mLoadStatus) {
             case 1:
@@ -123,7 +136,7 @@ public abstract class SwipeAdapter<E, UVH extends RecyclerView.ViewHolder>
                         notifyItemRangeChanged(mList.size() - temp.size(), mList.size());
                     }
                 }
-                break;
+            break;
             default:
                 break;
         }
@@ -209,7 +222,7 @@ public abstract class SwipeAdapter<E, UVH extends RecyclerView.ViewHolder>
                     @Override
                     public void onClick(View view) {
                         mSwipeItemCallback.callback(view, holder.getAdapterPosition(),
-                                mList.get(holder.getAdapterPosition()));
+                        mList.get(holder.getAdapterPosition()));
                     }
                 });
                 break;

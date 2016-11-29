@@ -70,7 +70,7 @@ public class TopNewsEntity implements Serializable {
             return data;
         }
 
-        public static class DataBean {
+        public static class DataBean implements Serializable{
             /**
              * title : 揭开韩国小巷发廊的神秘面纱，一次7万韩元好在哪里？
              * date : 2016-11-21 12:19
