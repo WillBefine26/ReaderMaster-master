@@ -1,12 +1,13 @@
 package com.yp.readermaster.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.yp.readermaster.R;
+import com.yp.readermaster.activity.NewsDetailActivity;
 import com.yp.readermaster.adapter.RefreshCallback;
 import com.yp.readermaster.adapter.TopNewsAdapter;
 import com.yp.readermaster.base.RxLazyBaseFragment;
@@ -91,7 +92,12 @@ public class NewsItemFragment extends RxLazyBaseFragment {
                     @Override
                     public void callback(View view, int position, TopNewsEntity.ResultBean.DataBean dataBean) {
                         //跳转详情页面
-                        Log.d("168", "NewsItemFragment--intent: 555555555555555");
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("news_detail",dataBean);
+                        Intent intent = new Intent(getSupportActivity(), NewsDetailActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
                     }
                 });
 
