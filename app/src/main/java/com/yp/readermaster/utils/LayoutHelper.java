@@ -33,7 +33,7 @@ public class LayoutHelper {
     public static HorizontalDividerItemDecoration getHorizontalDivider_5(Context context) {
         return new HorizontalDividerItemDecoration.Builder(context)
                 .color(Color.WHITE)
-                .sizeResId(R.dimen.five)
+                .sizeResId(R.dimen.zero)
                 .build();
     }
 

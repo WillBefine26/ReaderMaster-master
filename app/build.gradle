@@ -77,4 +77,6 @@ dependencies {
 
     //html解析库
     compile 'org.jsoup:jsoup:1.10.1'
+    //json
+    compile 'com.alibaba:fastjson:1.2.21'
 }

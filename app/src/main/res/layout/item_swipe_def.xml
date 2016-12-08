@@ -17,11 +17,10 @@
         android:id="@+id/atv_swipe_def"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img_swipe_def"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:textSize="14sp"
-        tools:text="网络故障-点击刷新"/>
+        tools:text="网络故障-点击刷新"
+        android:layout_below="@+id/img_swipe_def"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -16,7 +16,6 @@ import com.yp.readermaster.iml.SwipeItemCallback;
 import com.yp.readermaster.net.RetrofitHelper;
 import com.yp.readermaster.utils.ConstantUtils;
 import com.yp.readermaster.utils.LayoutHelper;
-import com.yp.readermaster.utils.LogUtils;
 import com.yp.readermaster.widget.SwipeRecyclerView;
 
 import java.util.ArrayList;
@@ -71,11 +70,12 @@ public class NewsItemFragment extends RxLazyBaseFragment {
 
     private void initData() {
         RecyclerView mRecyclerView = mSwipeRecyclerView.getRecyclerView();
-        mRecyclerView.addItemDecoration(LayoutHelper.getHorizontalDivider_6(getApplicationContext()));
+        mRecyclerView.addItemDecoration(LayoutHelper.getHorizontalDivider_5(getApplicationContext()));
         mSwipeRecyclerView.setRefreshCallback(new RefreshCallback() {
             @Override
             public void downRefresh() {
-                if (mArrayList != null) mArrayList.clear();
+                if (mArrayList != null)
+                    mArrayList.clear();
                 curpageInt = 1;
                 getNetData();
               Toast.makeText(getApplicationContext(),"下拉刷新完成",Toast.LENGTH_SHORT).show();
@@ -84,7 +84,6 @@ public class NewsItemFragment extends RxLazyBaseFragment {
             @Override
             public void upRefresh(int count) {
                 getNetData();
-                LogUtils.d("--------------count-----------------"+count);
             }
         });
 
@@ -104,6 +103,7 @@ public class NewsItemFragment extends RxLazyBaseFragment {
 
         mSwipeRecyclerView.setAdapter(mTopNewsAdapter);
         mSwipeRecyclerView.startDownRefresh();
+
     }
     // 设置新闻类型，和页面有关系
     public void setNewsType(ConstantUtils.ENewsType type) {
@@ -138,6 +138,7 @@ public class NewsItemFragment extends RxLazyBaseFragment {
                         mSwipeRecyclerView.downRefreshComplete(3);
                     }
                 });
+
 
     }
 

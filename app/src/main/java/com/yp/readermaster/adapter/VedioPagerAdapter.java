@@ -27,8 +27,8 @@ public class VedioPagerAdapter extends FragmentPagerAdapter{
     @Override
     public Fragment getItem(int position) {
         VideoItemFragment fragment = (VideoItemFragment) FragmentFactory.creatVedioFragment(mTabTitleList.get(position));
-        ConstantUtils.LolType[] lolTypes = ConstantUtils.LolType.values();
-        fragment.setLolType(lolTypes[position]);
+        ConstantUtils.EVideoType[] videoTypes = ConstantUtils.EVideoType.values();
+        fragment.setLolType(videoTypes[position]);
         return fragment;
     }
 

@@ -1,11 +1,12 @@
 package com.yp.readermaster.net;
 
-import android.util.Log;
-
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.yp.readermaster.config.App;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -29,10 +30,11 @@ public class RetrofitHelper {
     public static final String XIAOMI_WEATHER = "http://weatherapi.market.xiaomi.com/";
     //魅族天气
     public static final String MEIZU_WEATHER= "http://res.aider.meizu.com/";
+    //开眼视频
+    public static final String KAIEYE_URL = "http://baobab.kaiyanapp.com/";
 
     static{
         initOkhttpClient();
-        Log.d("168", "RetrofitHelper: kkkkkkkkkk");
     }
 
 
@@ -46,23 +48,31 @@ public class RetrofitHelper {
                 .build();
         return retrofit.create(TopNewsService.class);
     }
+    //获取开眼视频api
+    public static TopVideoService getTopVideoApi(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(KAIEYE_URL)
+                .client(mOkHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+        return retrofit.create(TopVideoService.class);
+
+    }
 
 
     private static void initOkhttpClient() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        Log.d("168", "RetrofitHelper: aaaaaaaaaaa");
         if (mOkHttpClient == null) {
             synchronized (RetrofitHelper.class) {
-                Log.d("168", "RetrofitHelper: bbbbbbbbbbbbbbbb");
                 if (mOkHttpClient == null) {
                     //设置http缓存
 
                    // try {
-                  //      Cache cache = new Cache(new File(App.getInstance().getCacheDir(), "HttpCache"), 1024 * 1024 * 100);
-                        Log.d("168", "RetrofitHelper: ccccccccccccccc");
+                        Cache cache = new Cache(new File(App.getInstance().getCacheDir(), "HttpCache"), 1024 * 1024 * 100);
                         mOkHttpClient = new OkHttpClient.Builder()
-               //                 .cache(cache)
+                                .cache(cache)
                                 .addInterceptor(interceptor)
                                 .addNetworkInterceptor(new StethoInterceptor())
                                 .retryOnConnectionFailure(true)

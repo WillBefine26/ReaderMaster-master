@@ -3,7 +3,6 @@ package com.yp.readermaster.config;
 
 import android.app.Application;
 import android.content.Context;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -34,14 +33,13 @@ public class App extends Application{
 
     public void displayImage(String uri, ImageView iv, int resId,
                              boolean isSkipMemoryCache, DiskCacheStrategy diskCacheType) {
-        Log.d("168", "displayImage: 1111111");
         Glide.with(appContext)
                 .load(uri)
-                .placeholder(resId != 0 ? resId : ConstantUtils.ERROR_IMAGE_ID)
+                .placeholder(ConstantUtils.LOADING_IMAGE_ID)
+                .error(resId != 0 ? resId : ConstantUtils.ERROR_IMAGE_ID)
                 .skipMemoryCache(isSkipMemoryCache)
                 .diskCacheStrategy(diskCacheType)
                 .into(iv);
-        Log.d("168", "displayImage: 2222222");
     }
 }
 

@@ -48,15 +48,15 @@ public class VideoFragment extends RxLazyBaseFragment{
     protected void finishCreateView(Bundle savedInstanceState) {
         if (mTabTitleList == null || mTabTitleList.isEmpty()) {
             mTabTitleList = new ArrayList<>();
-            ConstantUtils.LolType[] lolTypes = ConstantUtils.LolType.values();
-            if (lolTypes.length > 0) {
-                for (int i=0;i<lolTypes.length;i++) {
-                    mTabTitleList.add(lolTypes[i].getTitle());
+            ConstantUtils.EVideoType[] videoTypes = ConstantUtils.EVideoType.values();
+            if (videoTypes.length > 0) {
+                for (int i=0;i<videoTypes.length;i++) {
+                    mTabTitleList.add(videoTypes[i].getTitle());
                 }
             }
         }
         mVedioPagerAdapter = new VedioPagerAdapter(getChildFragmentManager(), mTabTitleList);
-        mViewPager.setOffscreenPageLimit(5);
+        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(mVedioPagerAdapter);
         mSlidingTabs.setViewPager(mViewPager);
     }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="230dp"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_H3" />
+
+        <RelativeLayout
+            android:id="@+id/rl_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/boman_selector"
+            >
+
+
+            <TextView
+                android:id="@+id/tv_title_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:gravity="center"
+                android:text="测试"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_type_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="动画"
+                android:textColor="@color/white"
+                android:layout_below="@+id/tv_title_video"
+                 />
+
+            <TextView
+                android:id="@+id/tv_time_video1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="16'29"
+                android:textColor="@color/white"
+                android:layout_below="@id/tv_type_video" />
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>
