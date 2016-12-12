@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
@@ -17,6 +18,7 @@ import com.yp.readermaster.fragment.DeveloperFragment;
 import com.yp.readermaster.fragment.NewsFragment;
 import com.yp.readermaster.fragment.VideoFragment;
 import com.yp.readermaster.fragment.ZhihuFragment;
+import com.yp.readermaster.utils.ToastUtils;
 
 import butterknife.BindView;
 /*
@@ -50,6 +52,8 @@ public class MainActivity extends RxAppCompatBaseActivity{
 
     private Bundle mSavedInstanceState;
     private FragmentManager mFm;
+
+    private long firstTime = 0;// 记录第一次按返回键的时间
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -209,6 +213,22 @@ public class MainActivity extends RxAppCompatBaseActivity{
             transaction.hide(mDeveloperFragment);
         }
     }
+
+    // 按两次退出程序
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - firstTime) > 2000) {
+                ToastUtils.showToast(MainActivity.this, "再按一次退出程序");
+                firstTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }
 
 

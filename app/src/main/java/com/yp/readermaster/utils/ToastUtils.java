@@ -57,4 +57,8 @@ public class ToastUtils {
         String text = context.getResources().getString(resId);
         showToast(context,text,duration);
     }
+    public static void showToast1(Context context, String text) {
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+
+    }
 }

@@ -46,6 +46,11 @@
         </activity>
 
         <activity android:name=".activity.NewsDetailActivity"/>
+
+        <activity
+            android:name=".activity.VideoDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensor" />
     </application>
 
 </manifest>

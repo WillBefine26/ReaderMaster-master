@@ -57,7 +57,7 @@ public abstract class RxAppCompatBaseActivity extends RxAppCompatActivity {
         this.setTranslucentStatus(true);
         this.mTintManager = new SystemBarTintManager(this);
         this.mTintManager.setStatusBarTintEnabled(true);
-        this.mTintManager.setTintColor(this.getResources().getColor(R.color.colorPrimaryDark));
+        this.mTintManager.setTintColor(this.getResources().getColor(R.color.background_dark));
     }
 
 

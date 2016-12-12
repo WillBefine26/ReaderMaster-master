@@ -53,7 +53,7 @@ public class TopVideoEntity implements Serializable{
         this.itemList = itemList;
     }
 
-    public static class ItemListBean {
+    public static class ItemListBean implements Serializable{
 
 
         private String type;
@@ -75,7 +75,7 @@ public class TopVideoEntity implements Serializable{
             this.data = data;
         }
 
-        public static class DataBean implements Serializable {
+        public static class DataBean  implements Serializable{
 
 
             private String dataType;
@@ -413,7 +413,7 @@ public class TopVideoEntity implements Serializable{
                 }
             }
 
-            public static class WebUrlBean {
+            public static class WebUrlBean implements Serializable{
                 /**
                  * raw : http://www.eyepetizer.net/detail.html?vid=11084
                  * forWeibo : http://www.eyepetizer.net/detail.html?vid=11084
@@ -439,7 +439,7 @@ public class TopVideoEntity implements Serializable{
                 }
             }
 
-            public static class ConsumptionBean {
+            public static class ConsumptionBean implements Serializable{
                 /**
                  * collectionCount : 2399
                  * shareCount : 7796
@@ -531,7 +531,7 @@ public class TopVideoEntity implements Serializable{
                 }
             }
 
-            public static class TagsBean {
+            public static class TagsBean implements Serializable{
                 /**
                  * id : 16
                  * name : 广告

@@ -1,10 +1,12 @@
 package com.yp.readermaster.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.yp.readermaster.R;
+import com.yp.readermaster.activity.VideoDetailActivity;
 import com.yp.readermaster.adapter.RefreshCallback;
 import com.yp.readermaster.adapter.TopVideoAdapter;
 import com.yp.readermaster.base.RxLazyBaseFragment;
@@ -90,8 +92,13 @@ public class VideoItemFragment extends RxLazyBaseFragment {
             @Override
             public void callback(View view, int position, TopVideoEntity.ItemListBean itemListBean) {
 
-            }
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("videodata", itemListBean);
+                Intent intent = new Intent(getSupportActivity(), VideoDetailActivity.class);
 
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
 
         });
 
