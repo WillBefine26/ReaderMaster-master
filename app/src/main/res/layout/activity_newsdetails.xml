@@ -31,6 +31,13 @@
             android:layout_height="match_parent"
             android:layout_below="@id/progress_bar">
         </WebView>
+        <Button
+            android:id="@+id/colletion_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/web_view"
+            android:background="@color/red"
+            android:text="收藏"/>
     </RelativeLayout>
 
 </android.support.v4.widget.NestedScrollView>

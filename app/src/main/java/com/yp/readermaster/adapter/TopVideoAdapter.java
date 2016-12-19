@@ -50,7 +50,6 @@ public class TopVideoAdapter  extends SwipeAdapter1<TopVideoEntity.ItemListBean,
         holder.mTvTitle.setText(dataBean.getData().getTitle());
         holder.mTVtype.setText("#"+dataBean.getData().getCategory());
         holder.mTimeVideo.setText(dataBean.getData().getDuration()+"s'");
-
         holder.mIvVideo.setScaleType(ImageView.ScaleType.FIT_XY);
         App.getInstance().displayImage(dataBean.getData().getCover().getFeed(), holder.mIvVideo, 0, true, DiskCacheStrategy.ALL);
     }

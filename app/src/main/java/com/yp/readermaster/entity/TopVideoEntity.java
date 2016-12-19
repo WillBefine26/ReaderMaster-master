@@ -171,7 +171,7 @@ public class TopVideoEntity implements Serializable{
                 this.cover = cover;
             }
 
-            public String getPlayUrl() {
+            public String  getPlayUrl() {
                 return playUrl;
             }
 

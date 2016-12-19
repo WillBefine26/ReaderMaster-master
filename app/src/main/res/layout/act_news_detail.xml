@@ -36,14 +36,6 @@
                 app:layout_collapseParallaxMultiplier="0.7"
                 tools:targetApi="lollipop"/>
 
-            <View
-                android:id="@+id/mask_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/mask_news_detail_photo"
-                android:fitsSystemWindows="true"
-                tools:visibility="visible" />
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -52,10 +44,20 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 />
 
+            <View
+                android:id="@+id/mask_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/mask_news_detail_photo"
+                android:fitsSystemWindows="true"
+                tools:visibility="visible" />
+
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/activity_newsdetails"/>
+
+
 
 </android.support.design.widget.CoordinatorLayout>

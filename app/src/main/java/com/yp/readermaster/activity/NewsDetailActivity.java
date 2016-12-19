@@ -13,14 +13,19 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.yp.readermaster.R;
 import com.yp.readermaster.base.RxAppCompatBaseActivity;
 import com.yp.readermaster.config.App;
 import com.yp.readermaster.entity.TopNewsEntity;
+import com.yp.readermaster.greendao.DataBean;
+import com.yp.readermaster.greendao.DataBeanDao;
+import com.yp.readermaster.greendao.DbCore;
 import com.yp.readermaster.utils.LogUtils;
 
 import org.jsoup.Jsoup;
@@ -30,8 +35,10 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import static com.yp.readermaster.R.id.toolbar;
 
@@ -59,6 +66,9 @@ public class NewsDetailActivity extends RxAppCompatBaseActivity {
     AppBarLayout mAppBar;
    // @BindView(fab)
    // FloatingActionButton mfab;
+
+   @BindView(R.id.colletion_btn)
+   Button colletionBtn;
 
     private String mUrl;
     private String mShareLink;
@@ -96,8 +106,8 @@ public class NewsDetailActivity extends RxAppCompatBaseActivity {
             }
         });
 
-    }
 
+    }
 
 
     private void initWebView() {
@@ -144,6 +154,36 @@ public class NewsDetailActivity extends RxAppCompatBaseActivity {
         App.getInstance().displayImage(mHeaderImage, mNewsDetailPhotoIv, 0, false, DiskCacheStrategy.ALL);
     }
 
+    private DataBean mBean;
+
+    @OnClick(R.id.colletion_btn)
+    public void OnClick(View view) {
+
+        unique(mBean.getTitle(),mBean);
+
+    }
+
+    private void unique(String msg,DataBean bean)//判断数据库里面的数据是否存在
+    {
+        boolean isHave = false;
+        DataBeanDao dbDao = DbCore.getDaoSession().getDataBeanDao();
+        List<DataBean> been = dbDao.loadAll();
+        for (int i = 0; i < been.size(); i++)
+        {
+            String title = been.get(i).getTitle();
+            isHave = msg.equals(title);
+            break;
+        }
+        if (isHave)
+        {
+            Toast.makeText(this, "您已收藏，切勿重复添加！", Toast.LENGTH_SHORT).show();
+        }else
+        {
+            dbDao.insert(bean);
+            Toast.makeText(this, "收藏成功！", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void setToolBarLayout(String newsTitle) {
         mToolbarLayout.setTitle(newsTitle);
         mToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.gray_light));
@@ -180,6 +220,7 @@ public class NewsDetailActivity extends RxAppCompatBaseActivity {
             }
         });
     }
+
 
     @Override
     protected void onDestroy() {

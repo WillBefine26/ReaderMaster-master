@@ -2,13 +2,106 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#dfdfdf"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:text="9"
-        android:layout_gravity="center" />
+    <LinearLayout
+        android:id="@+id/mine_info"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_height="80dp">
+
+        <ImageView
+            android:id="@+id/swipe_image"
+            android:padding="10dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/mackesikefeide"/>
+
+        <TextView
+            android:gravity="center_vertical|left"
+            android:textSize="20sp"
+            android:text="我妈生我必有用"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/textView2" />
+
+        <ImageView
+            android:src="@mipmap/gywm_icon_tiaozhuan_night"
+            android:padding="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="40dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/colletion"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+
+            android:src="@mipmap/grzy_icon_mark"
+            android:padding="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+        <TextView
+            android:text="我的收藏"
+            android:gravity="center_vertical|left"
+            android:textSize="15sp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"/>
+        <ImageView
+            android:src="@mipmap/gywm_icon_tiaozhuan_night"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="82dp"
+            android:layout_marginTop="13dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_marginTop="10dp">
+        <ImageView
+
+            android:src="@mipmap/grzy_icon_rate"
+            android:padding="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+        <TextView
+            android:text="个人设置"
+            android:gravity="center_vertical|left"
+            android:textSize="15sp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"/>
+        <ImageView
+            android:src="@mipmap/gywm_icon_tiaozhuan_night"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="82dp"
+            android:layout_marginTop="13dp"/>
+    </LinearLayout>
 
 </LinearLayout>

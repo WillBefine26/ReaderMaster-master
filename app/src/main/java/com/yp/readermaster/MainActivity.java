@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.yp.readermaster.base.RxAppCompatBaseActivity;
-import com.yp.readermaster.fragment.DeveloperFragment;
+import com.yp.readermaster.fragment.MineFragment;
 import com.yp.readermaster.fragment.NewsFragment;
 import com.yp.readermaster.fragment.VideoFragment;
 import com.yp.readermaster.fragment.ZhihuFragment;
@@ -40,14 +40,16 @@ public class MainActivity extends RxAppCompatBaseActivity{
     private NewsFragment mNewsFragment;
     private VideoFragment mVideoFragment;
     private ZhihuFragment mZhihuFragment;
-    private DeveloperFragment mDeveloperFragment;
+    private MineFragment mMineFragment;
 
-    private String TAB[] = {"资讯", "视频", "知乎", "天气"};
+    private String TAB[] = {"资讯", "视频", "漫画", "我"};
     private String TITLE;
-    private int TAB_COLOR[] = {R.color.colorPrimary,
-            R.color.slategray,
-            R.color.goldyellow,
-            R.color.green_300};
+    private int TAB_COLOR[] = {
+            R.color.colorPrimary,
+            R.color.background_dark,
+            R.color.pink,
+            R.color.dimgrey};
+
     private int mToolBarBG = R.color.colorPrimary;
 
     private Bundle mSavedInstanceState;
@@ -162,13 +164,13 @@ public class MainActivity extends RxAppCompatBaseActivity{
                     break;
                 case 3://开发
                     hideFragment(transaction);
-                    if (mDeveloperFragment == null) {
-                        mDeveloperFragment = DeveloperFragment.newInstance(TAB[3]);
-                        transaction.add(R.id.layFrame, mDeveloperFragment);
+                    if (mMineFragment == null) {
+                        mMineFragment = MineFragment.newInstance(TAB[3]);
+                        transaction.add(R.id.layFrame, mMineFragment);
                     } else {
-                        transaction.show(mDeveloperFragment);
+                        transaction.show(mMineFragment);
                     }
-//                    transaction.replace(R.id.layFrame, mDeveloperFragment);
+//                    transaction.replace(R.id.layFrame, mMineFragment);
                     break;
             }
             transaction.addToBackStack(null);
@@ -209,8 +211,8 @@ public class MainActivity extends RxAppCompatBaseActivity{
         if (mZhihuFragment != null) {
             transaction.hide(mZhihuFragment);
         }
-        if (mDeveloperFragment != null) {
-            transaction.hide(mDeveloperFragment);
+        if (mMineFragment != null) {
+            transaction.hide(mMineFragment);
         }
     }
 

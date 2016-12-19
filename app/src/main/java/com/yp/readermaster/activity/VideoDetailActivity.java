@@ -1,7 +1,9 @@
 package com.yp.readermaster.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import com.yp.readermaster.config.App;
 import com.yp.readermaster.entity.TopVideoEntity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by
@@ -73,8 +76,6 @@ public class VideoDetailActivity extends RxAppCompatBaseActivity {
         TopVideoEntity.ItemListBean itemListBean =
                 (TopVideoEntity.ItemListBean) bundle.getSerializable("videodata");
 
-        String blurred = getIntent().getStringExtra("blurred");//模糊图片
-
         videoDetailTitle.setText(itemListBean.getData().getTitle());
         video_detail_type.setText("#"+itemListBean.getData().getCategory());
         videoDetailTime.setText(itemListBean.getData().getDuration()+"s'");
@@ -84,7 +85,20 @@ public class VideoDetailActivity extends RxAppCompatBaseActivity {
         videoDetailIvmo.setScaleType(ImageView.ScaleType.FIT_XY);
         App.getInstance().displayImage(itemListBean.getData().getCover().getDetail(),videoDetailIv,0,true, DiskCacheStrategy.ALL);
         App.getInstance().displayImage(itemListBean.getData().getCover().getBlurred(),videoDetailIvmo,0,true, DiskCacheStrategy.ALL);
+    }
 
+    private String video;
+    private String title;
+    @OnClick(R.id.video_paly)
+    public void play(View view){
+        Intent intent = new Intent(this, VideoPlay.class);
+        Bundle bundle = new Bundle();
+        video = getIntent().getStringExtra("video");//接收视频播放地址
+        title = getIntent().getStringExtra("title");// 接收播放时 标题
+        bundle.putString("video",video);
+        bundle.putString("title",title);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
 

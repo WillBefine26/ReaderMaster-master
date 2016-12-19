@@ -127,6 +127,7 @@ public abstract class RxLazyBaseFragment extends RxFragment{
         return (T) mParentView.findViewById(id);
     }
 
+
 }
 
 

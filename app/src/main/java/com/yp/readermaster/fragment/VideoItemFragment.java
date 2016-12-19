@@ -66,7 +66,7 @@ public class VideoItemFragment extends RxLazyBaseFragment {
         isPrepared = false;
     }
 
-    private void initData() {
+    public void initData() {
         RecyclerView recyclerView = mSwipeRecyclerView.getRecyclerView();
         recyclerView.addItemDecoration(LayoutHelper.getHorizontalDivider_5(getApplicationContext()));
 
@@ -94,8 +94,10 @@ public class VideoItemFragment extends RxLazyBaseFragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("videodata", itemListBean);
-                Intent intent = new Intent(getSupportActivity(), VideoDetailActivity.class);
 
+                bundle.putString("video", itemListBean.getData().getPlayUrl());//视频播放地址
+                bundle.putString("title", itemListBean.getData().getTitle()); // 播放时 标题
+                Intent intent = new Intent(getSupportActivity(), VideoDetailActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
